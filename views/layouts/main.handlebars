@@ -1,0 +1,67 @@
+<html lang='en'>
+
+  <head>
+    <meta charset='UTF-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <title>Tech Blog</title>
+    <link
+      href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css'
+      rel='stylesheet'
+      integrity='sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM'
+      crossorigin='anonymous'
+    />
+    <link rel='stylesheet' href='/css/style.css' />
+  </head>
+
+  <body>
+    <div class='container-fluid'>
+      <div class='flex-column justify-space-around'>
+        <header class='display-flex justify-space-between align-center'>
+          <nav class='navbar'>
+            <a href='/' class='nav-item'>Home</a>
+            <a href='/dashboard' class='nav-item'>Dashboard</a>
+            <a href='/login' class='nav-item'>Login</a>
+            <a href='#' id='logout-link' class='nav-item'>Logout</a>
+          </nav>
+          <div class='hero'>
+            <h1 class='app-title'>
+              <a href='/'>
+                {{#if dashboard}}
+                  Dashboard
+                {{else}}
+                  Tech Blog
+                {{/if}}
+              </a>
+            </h1>
+          </div>
+
+          <nav>
+            <!-- Conditionally render login or logout links -->
+            {{#if logged_in}}
+              <a href='/profile'>profile</a>
+              |
+              <button class='no-button' id='logout'>logout</button>
+            {{else}}
+              <a href='/login'>login</a>
+            {{/if}}
+          </nav>
+        </header>
+        <main class='container container-fluid mt-5'>
+          <!-- Render the sub layout -->
+          {{{body}}}
+        </main>
+        <footer>
+
+        </footer>
+      </div>
+    </div>
+    <!-- container-fluid -->
+
+    <!-- Render script for logged in users only -->
+    {{#if logged_in}}
+      <script src='/js/logout.js'></script>
+    {{/if}}
+
+  </body>
+
+</html>
